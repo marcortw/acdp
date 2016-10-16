@@ -35,57 +35,57 @@ The author confirms that: this dissertation does not contain material previously
 
 Contents
 
-[1 Introduction & Scope 1](#_Toc445043949)
+[1 Introduction & Scope 1]
 
-[1.1 Problem analysis 1](#_Toc445043950)
+[1.1 Problem analysis 1]
 
-[1.2 Idea description 3](#_Toc445043951)
+[1.2 Idea description 3]
 
-[1.3 Document Structure 4](#_Toc445043952)
+[1.3 Document Structure 4]
 
-[2 Background research 5](#_Toc445043953)
+[2 Background research 5]
 
-[2.1 Software defined networking 5](#_Toc445043954)
+[2.1 Software defined networking 5]
 
-[2.2 Automation and Orchestration 5](#_Toc445043955)
+[2.2 Automation and Orchestration 5]
 
-[2.3 Discovery Protocols 6](#_Toc445043956)
+[2.3 Discovery Protocols 6]
 
-[2.4 Cloud Services 7](#_Toc445043957)
+[2.4 Cloud Services 7]
 
-[2.5 Description of communication patterns 7](#_Toc445043958)
+[2.5 Description of communication patterns 7]
 
-[2.6 DevOps 8](#_Toc445043959)
+[2.6 DevOps 8]
 
-[3 Project work 9](#_Toc445043960)
+[3 Project work 9]
 
-[3.1 Reference architecture 9](#_Toc445043961)
+[3.1 Reference architecture 9]
 
-[3.2 Detail specification 12](#_Toc445043962)
+[3.2 Detail specification 12]
 
-[3.3 Proof of concept 32](#_Toc445043963)
+[3.3 Proof of concept 32]
 
-[4 Analysis and discussion 50](#_Toc445043964)
+[4 Analysis and discussion 50]
 
-[4.1 Implementation 50](#_Toc445043965)
+[4.1 Implementation 50]
 
-[4.2 Specification 50](#specification)
+[4.2 Specification 50]
 
-[4.3 Final remarks 52](#final-remarks)
+[4.3 Final remarks 52]
 
-[5 Appendix 53](#_Toc445043968)
+[5 Appendix 53]
 
-[5.1 Bibliography 53](#_Toc445043969)
+[5.1 Bibliography 53]
 
-[5.2 Table of figures 58](#table-of-figures)
+[5.2 Table of figures 58]
 
-[5.3 Table of listings 58](#table-of-listings)
+[5.3 Table of listings 58]
 
-[5.4 ACDP Request Schema 59](#_Toc445043972)
+[5.4 ACDP Request Schema 59]
 
-[5.5 Firewall rule creation 64](#_Toc445043973)
+[5.5 Firewall rule creation 64]
 
-[5.6 Code Statistics 66](#code-statistics)
+[5.6 Code Statistics 66]
 
 <span id="_Toc444796912" class="anchor"><span id="_Toc445043949" class="anchor"></span></span>Introduction & Scope
 ==================================================================================================================
@@ -333,9 +333,9 @@ An ACDP Request always consists of a single object at the root level. This ACDP 
 
 -   The request object must have a property with the name “type” and a value of “ACDPREQUEST”
 
--   The request object must have a property of type [submitter](#_Submitter_object).
+-   The request object must have a property of type [submitter].
 
--   The request object must have a property of type [demands](#_Demands_collection).
+-   The request object must have a property of type [demands].
 
 -   The request object must not have any other properties.
 
@@ -357,7 +357,7 @@ The *submitter* is an object which describes the environment of the sender of th
 
 -   The *submitter* object should have a property with the name “description”. This property’s value must be a string that determines the sender’s properties, e.g. the ACDP Submitter’s platform and version number.
 
--   The *submitter* object should have a property with the name “endpoint”. The endpoint’s value, if used within the Submitter object, is an object which must have a property of type [networkEndpoint](#_Layer_3_Endpoint). It describes the Submitter’s local IP address(es) as the Submitter sees it.
+-   The *submitter* object should have a property with the name “endpoint”. The endpoint’s value, if used within the Submitter object, is an object which must have a property of type [networkEndpoint]. It describes the Submitter’s local IP address(es) as the Submitter sees it.
 
 -   The *submitter* object must not have any other properties.
 
@@ -387,7 +387,7 @@ Examples
 
 A *demands* object contains a list of objects which describe the communication needs of an application.
 
--   The *demands* object must have a value of type array. This array must have at least one property of type [producer](#producer-object) or [consumer](#consumer-object).
+-   The *demands* object must have a value of type array. This array must have at least one property of type [producer] or [consumer].
 
 -   Each property in the array must be unique.
 
@@ -417,11 +417,11 @@ Examples
 
 A *producer* object holds the definition of services which are produced by the application for consumption by other consumers.
 
--   The *producer* object must have a property of type [application](#_Application)
+-   The *producer* object must have a property of type [application]
 
--   The *producer* object must have a property of type [produces](#produces-object)
+-   The *producer* object must have a property of type [produces]
 
--   The *producer* object must have a property of type [forConsumers](#forconsumers-object)
+-   The *producer* object must have a property of type [forConsumers]
 
 -   The *producer* object must have a property with the name “id”. This property’s value is a string or a number that identifies a specific *producer* object. The value must be unique within an ACDPREQUEST and it must be unique during the lifetime of an ACDP Submitter process. The value may continue to be the same for a given *producer* object even when an ACDP Submitter process restarts.
 
@@ -455,11 +455,11 @@ Example
 
 A *produces* object contains a list of objects which describe the endpoints of an application.
 
--   The *produces* object must only be valid when it is a property of the [producer](#producer-object) object. Please note that this can only be implicitly enforced through a stringent definition of the whole ACDP Request schema.
+-   The *produces* object must only be valid when it is a property of the [producer] object. Please note that this can only be implicitly enforced through a stringent definition of the whole ACDP Request schema.
 
--   The *produces* object must have a value of type array. This array must have at least one property of type [endpoint](#endpoint-object)
+-   The *produces* object must have a value of type array. This array must have at least one property of type [endpoint]
 
--   The endpoints in the produces array must be of type [transportEndpoint](#_Layer_4_Endpoint)
+-   The endpoints in the produces array must be of type [transportEndpoint]
 
 -   The objects in the *produces* array must not have any other properties.
 
@@ -497,11 +497,11 @@ Example
 
 The *forConsumers* object contains a list of endpoints which might want to consume services provided by this application. It usually consists of hostnames or applications and thus describes endpoints which can be identified on layer 3.
 
--   The *forConsumers* object must only be valid when it is a property of the [producer](#producer-object) object
+-   The *forConsumers* object must only be valid when it is a property of the [producer] object
 
--   The *forConsumers* object must have a value of type array. This array must have at least one property of type [endpoint](#endpoint-object)
+-   The *forConsumers* object must have a value of type array. This array must have at least one property of type [endpoint]
 
--   The endpoints in the *forConsumers* array must be of the type [networkEndpoint](#_Layer_3_Endpoint) or [applicationEndpoint](#_Layer_7_Endpoint)
+-   The endpoints in the *forConsumers* array must be of the type [networkEndpoint] or [applicationEndpoint]
 
 -   The objects in the *forConsumers* array must not have any other properties
 
@@ -529,11 +529,11 @@ Example
 
 A *consumer* object holds the definition of services which are produced by other applications for consumption by this application.
 
--   The *consumer* object must have a property of type [application](#_Application).
+-   The *consumer* object must have a property of type [application].
 
--   The *consumer* object must have a property of type [consumes](#_Consumes_collection).
+-   The *consumer* object must have a property of type [consumes].
 
--   The *consumer* object must have a property of type [fromProducers](#fromproducers-object).
+-   The *consumer* object must have a property of type [fromProducers].
 
 -   The *consumer* object must have a property with the name “id”. This property’s value is a string or a number that identifies a specific consumer. The value must be unique within an ACDPREQUEST and it must be unique during the lifetime of an ACDP Submitter process. The value may continue to be the same for a given *consumer* object even when an ACDP Submitter process restarts.
 
@@ -567,11 +567,11 @@ Example
 
 A *consumes* object contains a list of objects which describe the endpoints that this application wishes to consume.
 
--   The *consumes* object must only be valid when it is a property of the [consumer](#consumer-object) object.
+-   The *consumes* object must only be valid when it is a property of the [consumer] object.
 
--   The *consumes* object must have a value of type array. This array must have at least one property of type [endpoint](#endpoint-object)
+-   The *consumes* object must have a value of type array. This array must have at least one property of type [endpoint]
 
--   The endpoints in the *consumes* array must be of the type [transportEndpoint](#_Layer_4_Endpoint) or [applicationEndpoint](#_Layer_7_Endpoint)
+-   The endpoints in the *consumes* array must be of the type [transportEndpoint] or [applicationEndpoint]
 
 -   The *consumes* array must not have any other properties
 
@@ -597,11 +597,11 @@ Example
 
 The *fromProducers* object contains a list of endpoints which this application wants to consume. It usually consists of hostnames or applications and thus describes endpoints which can be identified on layer 3.
 
--   The *fromProducers* object must only be valid when it is a property of the [consumer](#consumer-object) object.
+-   The *fromProducers* object must only be valid when it is a property of the [consumer] object.
 
--   The *fromProducers* object must have a value of type array. This array must have at least one property of type [endpoint](#endpoint-object)
+-   The *fromProducers* object must have a value of type array. This array must have at least one property of type [endpoint]
 
--   The endpoints in the *fromProducers* array must be of the type [networkEndpoint](#_Layer_3_Endpoint) or [applicationEndpoint](#_Layer_7_Endpoint)
+-   The endpoints in the *fromProducers* array must be of the type [networkEndpoint] or [applicationEndpoint]
 
 -   The *fromProducers* array must not have any other properties
 
@@ -645,7 +645,7 @@ The *application* object describes an application in a generic way. The values o
 
 -   The *application* object may have other custom properties.
 
--   The *application* object may itself be an [applicationEndpoint](#_Layer_7_Endpoint).
+-   The *application* object may itself be an [applicationEndpoint].
 
 Example
 
@@ -664,11 +664,11 @@ Example
 
 The *endpoint* object is a wrapper to describe different types of endpoints.
 
--   The *endpoint* object must have at least one property of the type [networkEndpoint](#_Layer_3_Endpoint), [transportEndpoint](#_Layer_4_Endpoint) or [applicationEndpoint](#_Layer_7_Endpoint)
+-   The *endpoint* object must have at least one property of the type [networkEndpoint], [transportEndpoint] or [applicationEndpoint]
 
 -   The *endpoint* object must not have any other properties.
 
-Note: The endpoint object itself is not used or enforced in the Schema. The schema only references to the final endpoint type through the context of where it is used, e.g. through the [transportEndpoint](#_TransportEndpoint_object) in the [consumes](#_Consumes_object) object. Due to this context-sensitivity of the *endpoint* object, quite a bit of additional description is necessary in the schema.
+Note: The endpoint object itself is not used or enforced in the Schema. The schema only references to the final endpoint type through the context of where it is used, e.g. through the [transportEndpoint][1] in the [consumes][2] object. Due to this context-sensitivity of the *endpoint* object, quite a bit of additional description is necessary in the schema.
 
 Examples
 
@@ -718,7 +718,7 @@ Examples
 
 An endpoint of this type describes a host on a private or public network which is identifiable either through an IP address or a fully qualified domain name.
 
--   The *networkEndpoint* object must have only one property of either type [ipAddresses](#ipaddresses-object) or [fdqNames](#fqdnames-object) or [special](#_Special_object)
+-   The *networkEndpoint* object must have only one property of either type [ipAddresses] or [fdqNames] or [special]
 
 Examples
 
@@ -750,7 +750,7 @@ Examples
 
 An endpoint of this type describes an endpoint on layer 4 which is identifiable through the string TCP or UDP or SCTP in combination with a port number.
 
--   <span id="_Layer_7_Endpoint" class="anchor"></span>The *transportEndpoint* object must have only one property of type [ports](#ports-object) or [special](#_Special_object)
+-   <span id="_Layer_7_Endpoint" class="anchor"></span>The *transportEndpoint* object must have only one property of type [ports] or [special]
 
 Example
 
@@ -779,9 +779,9 @@ Example
 
 An *applicationEndpoint* object is an endpoint which is predefined for additional definitions later to be added to the schema such as URLs. In its current definition it may only contain an array of applications. Or of the special types.
 
--   The *applicationEndpoint* object must have only one property of either name “applications” or type [special](#_Special_object)
+-   The *applicationEndpoint* object must have only one property of either name “applications” or type [special]
 
--   The *applications* property must have a value of type array. This array must have at least one property of type [application](#_Application_object).
+-   The *applications* property must have a value of type array. This array must have at least one property of type [application][3].
 
 -   Each property in the *applications* array must be unique.
 
@@ -801,7 +801,7 @@ Examples
 
 ##### CustomEndpoint object
 
-The *customEndpoint* serves as a generic placeholder for future or custom use. Its intention is to serve as a placeholder for describing any thinkable endpoint on any layer. An implementer is free to use this endpoint object wherever it is allowed to do so. However, the customEndpoint shall not be used to convey or enrich information which is intended to be transported in one of the other endpoints. Please note that although the customEndpoint has its place in the schema and could be accessed using a JSON pointer, it is of no real use currently because it is not included in one of the [Producer](#producer-object) or [Consumer](#consumer-object) objects. This should be addressed in a future release of the schema.
+The *customEndpoint* serves as a generic placeholder for future or custom use. Its intention is to serve as a placeholder for describing any thinkable endpoint on any layer. An implementer is free to use this endpoint object wherever it is allowed to do so. However, the customEndpoint shall not be used to convey or enrich information which is intended to be transported in one of the other endpoints. Please note that although the customEndpoint has its place in the schema and could be accessed using a JSON pointer, it is of no real use currently because it is not included in one of the [Producer][producer] or [Consumer][consumer] objects. This should be addressed in a future release of the schema.
 
 Examples
 
@@ -828,9 +828,9 @@ Examples
 
 ##### IpAddresses object
 
-The *ipAddresses* object holds information about IP addresses. It is mainly used within a [networkEndpoint](#_NetworkEndpoint_object) definition.
+The *ipAddresses* object holds information about IP addresses. It is mainly used within a [networkEndpoint][4] definition.
 
--   The *ipAddresses* object must have a value of type array. This array must have at least one value of format [IP Address](#_IP_address_format)
+-   The *ipAddresses* object must have a value of type array. This array must have at least one value of format [IP Address]
 
 -   The *ipAddresses* array must not have any other properties.
 
@@ -850,7 +850,7 @@ Example
 
 The *fqdNames* object holds information about fully qualified domain names.
 
--   The *fqdNames* object must have a value of type array. This array must have at least one value of format [FQDN](#_FQDN_format).
+-   The *fqdNames* object must have a value of type array. This array must have at least one value of format [FQDN].
 
 -   The *fqdNames* array must not have any other properties.
 
@@ -945,7 +945,7 @@ For some string values, the ACDP schema enforces the use of a specific notation.
 
 ##### <span id="_ipAddresses_object" class="anchor"><span id="_IP_address_format" class="anchor"><span id="_Ref444022439" class="anchor"></span></span></span>IP address format
 
-With the current definition, only IP version 4 addresses are supported. An IP address or a range of IP addresses can be expressed using one of the following schemes (examples have already been provided in the description of the [ipAddresses](#ipaddresses-object) object):
+With the current definition, only IP version 4 addresses are supported. An IP address or a range of IP addresses can be expressed using one of the following schemes (examples have already been provided in the description of the [ipAddresses] object):
 
 1.  An IPv4 single IP in dotted decimal notation according to RFC 3986 .
 
@@ -983,11 +983,11 @@ An ACDP Response always consists of a single object at the root level. This ACDP
 
 -   The *response* object must have a property with the name “type” and a value of “ACDPRESPONSE”
 
--   The *response* object must have a property of type [receiver](#receiver-object).
+-   The *response* object must have a property of type [receiver].
 
--   The *response* object should have a property of type [demands](#demands-object-1). If the Request was invalid according to the ACDP Request Schema, the *demands* object should be omitted. If the Request was valid, the *demands* object must be supplied.
+-   The *response* object should have a property of type [demands][5]. If the Request was invalid according to the ACDP Request Schema, the *demands* object should be omitted. If the Request was valid, the *demands* object must be supplied.
 
--   The *response* object must have a property of type [request](#request-object-1).
+-   The *response* object must have a property of type [request].
 
 -   The *response* object must not have any other properties.
 
@@ -1100,7 +1100,7 @@ An ACDP Wrapper always consists of a single object at the root level. This ACDP 
 
 -   The *Wrapper* object must have a property with the name “type” and a value of “ACDPWRAPPER”
 
--   The W*rapper* object must have only one additional property. In the current draft, the only supported property is of the type [jwe](#jwe-object) (which stands for JSON Web Encryption)
+-   The W*rapper* object must have only one additional property. In the current draft, the only supported property is of the type [jwe] (which stands for JSON Web Encryption)
 
 -   The *wrapper* object must not have any other properties.
 
@@ -1368,7 +1368,7 @@ A Receiver must always perform validation of the ACDP message. A Receiver should
 
 <span id="_Ref444545933" class="anchor"><span id="_Toc445043993" class="anchor"></span></span>Listing 2 - HTTP response example
 
-The Receiver must be able to see a Submitter’s IP address in the received IP packet. Such low-level information always takes precedence over information found in the [Submitter](#_Submitter_object) object of an ACDP Request message.
+The Receiver must be able to see a Submitter’s IP address in the received IP packet. Such low-level information always takes precedence over information found in the [Submitter][submitter] object of an ACDP Request message.
 
 If an ACDP message is received within a short period of time both from the unidirectional as well as the bidirectional API, the Receiver should avoid forwarding the message. A Receiver should therefore implement a local queuing mechanism which is able to correlate identical Demands. If a Receiver receives an ACDP Request and the implementer decides to configure the network automatically, he must take care of such a correlation to avoid conflicts on the Enforcer or Controller.
 
@@ -2330,92 +2330,92 @@ As a follow-up to this dissertation, the author plans to invite more people to d
 Table of figures
 ----------------
 
-[Figure 1 - Application communication in a Cloud Foundry PaaS without security groups on spaces 2](#_Toc445043975)
+[Figure 1 - Application communication in a Cloud Foundry PaaS without security groups on spaces 2]
 
-[Figure 2 - CF PaaS with a limited spaces configuration 2](#_Toc445043976)
+[Figure 2 - CF PaaS with a limited spaces configuration 2]
 
-[Figure 3 - SDN Architecture from \[10\] 5](#_Toc445043977)
+[Figure 3 - SDN Architecture from \[10\] 5]
 
-[Figure 4 - ACDP Architectural Overview 11](#_Toc445043978)
+[Figure 4 - ACDP Architectural Overview 11]
 
-[Figure 5 - Broadcast scheme 26](#_Toc445043979)
+[Figure 5 - Broadcast scheme 26]
 
-[Figure 6 - Unicast scheme 26](#_Toc445043980)
+[Figure 6 - Unicast scheme 26]
 
-[Figure 7 - Multicast scheme 27](#_Toc445043981)
+[Figure 7 - Multicast scheme 27]
 
-[Figure 8 - Anycast scheme 28](#_Toc445043982)
+[Figure 8 - Anycast scheme 28]
 
-[Figure 9 - Geocast scheme 28](#_Toc445043983)
+[Figure 9 - Geocast scheme 28]
 
-[Figure 10 - Operating mode of the communication protocol 30](#_Toc445043984)
+[Figure 10 - Operating mode of the communication protocol 30]
 
-[Figure 11 - Test setup for the proof of concept 33](#_Toc445043985)
+[Figure 11 - Test setup for the proof of concept 33]
 
-[Figure 12 - Initial configuration of the WAN interface on acdp-enforcer-1 43](#_Toc445043986)
+[Figure 12 - Initial configuration of the WAN interface on acdp-enforcer-1 43]
 
-[Figure 13 - Initial configuration of the LAN interface on acdp-enforcer-1 44](#_Toc445043987)
+[Figure 13 - Initial configuration of the LAN interface on acdp-enforcer-1 44]
 
-[Figure 14 - Firewall after provisioning of Demand 5576063a-ce0a-4b9a-98a3-ed346f57cb30 46](#_Toc445043988)
+[Figure 14 - Firewall after provisioning of Demand 5576063a-ce0a-4b9a-98a3-ed346f57cb30 46]
 
-[Figure 15 - Firewall after provisioning of Demand 765ad15e-7314-4dbd-83e7-846aa47ee6d3 47](#_Toc445043989)
+[Figure 15 - Firewall after provisioning of Demand 765ad15e-7314-4dbd-83e7-846aa47ee6d3 47]
 
-[Figure 16 - Firewall after provisioning of Demand 1555c89b-5b13-4c43-9112-808680e427ef 48](#_Toc445043990)
+[Figure 16 - Firewall after provisioning of Demand 1555c89b-5b13-4c43-9112-808680e427ef 48]
 
-[Figure 17 - Firewall after provisioning of Demand 196d692c-181a-4f37-8eea-e254409c375d 49](#_Toc445043991)
+[Figure 17 - Firewall after provisioning of Demand 196d692c-181a-4f37-8eea-e254409c375d 49]
 
 Table of listings
 -----------------
 
-[Listing 1 - HTTP Request for the bidirectional API 31](#_Toc445043992)
+[Listing 1 - HTTP Request for the bidirectional API 31]
 
-[Listing 2 - HTTP response example 32](#_Toc445043993)
+[Listing 2 - HTTP response example 32]
 
-[Listing 3 - Initialization using an encryption key 35](#_Toc445043994)
+[Listing 3 - Initialization using an encryption key 35]
 
-[Listing 4 - ACDP Request as sent over the wire 36](#_Toc445043995)
+[Listing 4 - ACDP Request as sent over the wire 36]
 
-[Listing 5 – Valid acdp.consume() function calls 36](#_Toc445043996)
+[Listing 5 – Valid acdp.consume() function calls 36]
 
-[Listing 6 – Valid acdp.produce() function calls 36](#_Toc445043997)
+[Listing 6 – Valid acdp.produce() function calls 36]
 
-[Listing 7 – Valid acdp.rawDemands() function call 37](#_Toc445043998)
+[Listing 7 – Valid acdp.rawDemands() function call 37]
 
-[Listing 8 - Configuration file for acdp-test1-submitter-2 37](#_Toc445043999)
+[Listing 8 - Configuration file for acdp-test1-submitter-2 37]
 
-[Listing 9 - Implementation of the sending algorithm 38](#_Toc445044000)
+[Listing 9 - Implementation of the sending algorithm 38]
 
-[Listing 10 - Options object containing the real source ip 39](#_Toc445044001)
+[Listing 10 - Options object containing the real source ip 39]
 
-[Listing 11 - Implementation of the unicast listener 39](#_Toc445044002)
+[Listing 11 - Implementation of the unicast listener 39]
 
-[Listing 12 - Implementation of the multicast listener 40](#_Toc445044003)
+[Listing 12 - Implementation of the multicast listener 40]
 
-[Listing 13 - Validation against the ACDP Request Schema 40](#_Toc445044004)
+[Listing 13 - Validation against the ACDP Request Schema 40]
 
-[Listing 14 - Main program of the Receiver 41](#_Toc445044005)
+[Listing 14 - Main program of the Receiver 41]
 
-[Listing 15 - Main program of acdp-test1-submitter-1 42](#_Toc445044006)
+[Listing 15 - Main program of acdp-test1-submitter-1 42]
 
-[Listing 16 - Main program of acdp-test1-submitter-2 42](#_Toc445044007)
+[Listing 16 - Main program of acdp-test1-submitter-2 42]
 
-[Listing 17 - Status of acdp-test1-receiver after startup 44](#_Toc445044008)
+[Listing 17 - Status of acdp-test1-receiver after startup 44]
 
-[Listing 18 - Status of acdp-test1-submitter-2 after initial start 45](#_Toc445044009)
+[Listing 18 - Status of acdp-test1-submitter-2 after initial start 45]
 
-[Listing 19 - ACDP Consumer Request which was sent to the receiver 45](#_Toc445044010)
+[Listing 19 - ACDP Consumer Request which was sent to the receiver 45]
 
-[Listing 20 - ACDP Producer Request which was sent to the receiver 46](#_Toc445044011)
+[Listing 20 - ACDP Producer Request which was sent to the receiver 46]
 
-[Listing 21 - Status of acdp-test1-receiver after Demands from acdp-test1-submitter-2 46](#_Toc445044012)
+[Listing 21 - Status of acdp-test1-receiver after Demands from acdp-test1-submitter-2 46]
 
-[Listing 22 - Status of acdp-test1-submitter-1 after initial start 47](#_Toc445044013)
+[Listing 22 - Status of acdp-test1-submitter-1 after initial start 47]
 
-[Listing 23 - Status of acdp-test1-receiver after Demands from acdp-test1-submitter-1 48](#_Toc445044014)
+[Listing 23 - Status of acdp-test1-receiver after Demands from acdp-test1-submitter-1 48]
 
-[Listing 24 - Complete ACDP Request Schema 64](#_Toc445044015)
+[Listing 24 - Complete ACDP Request Schema 64]
 
-[Listing 25 - Firewall rule creation in the Receiver 65](#_Toc445044016)
+[Listing 25 - Firewall rule creation in the Receiver 65]
 
 <span id="_Ref440803551" class="anchor"><span id="_Toc444796935" class="anchor"><span id="_Toc445043972" class="anchor"></span></span></span>ACDP Request Schema
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3179,3 +3179,99 @@ The following numbers show the “lines of code” for each module. Physical lin
 | Total                                        |              | 561        |
 
 [1] This document uses OSI model’s terminology from layer 1 to 4 . The term “application layer” as it is used in this dissertation comprises of OSI layers 5-7, reflecting the term “application layer” as it is defined in the TCP/IP model .
+
+  [1 Introduction & Scope 1]: #_Toc445043949
+  [1.1 Problem analysis 1]: #_Toc445043950
+  [1.2 Idea description 3]: #_Toc445043951
+  [1.3 Document Structure 4]: #_Toc445043952
+  [2 Background research 5]: #_Toc445043953
+  [2.1 Software defined networking 5]: #_Toc445043954
+  [2.2 Automation and Orchestration 5]: #_Toc445043955
+  [2.3 Discovery Protocols 6]: #_Toc445043956
+  [2.4 Cloud Services 7]: #_Toc445043957
+  [2.5 Description of communication patterns 7]: #_Toc445043958
+  [2.6 DevOps 8]: #_Toc445043959
+  [3 Project work 9]: #_Toc445043960
+  [3.1 Reference architecture 9]: #_Toc445043961
+  [3.2 Detail specification 12]: #_Toc445043962
+  [3.3 Proof of concept 32]: #_Toc445043963
+  [4 Analysis and discussion 50]: #_Toc445043964
+  [4.1 Implementation 50]: #_Toc445043965
+  [4.2 Specification 50]: #specification
+  [4.3 Final remarks 52]: #final-remarks
+  [5 Appendix 53]: #_Toc445043968
+  [5.1 Bibliography 53]: #_Toc445043969
+  [5.2 Table of figures 58]: #table-of-figures
+  [5.3 Table of listings 58]: #table-of-listings
+  [5.4 ACDP Request Schema 59]: #_Toc445043972
+  [5.5 Firewall rule creation 64]: #_Toc445043973
+  [5.6 Code Statistics 66]: #code-statistics
+  [submitter]: #_Submitter_object
+  [demands]: #_Demands_collection
+  [networkEndpoint]: #_Layer_3_Endpoint
+  [producer]: #producer-object
+  [consumer]: #consumer-object
+  [application]: #_Application
+  [produces]: #produces-object
+  [forConsumers]: #forconsumers-object
+  [endpoint]: #endpoint-object
+  [transportEndpoint]: #_Layer_4_Endpoint
+  [applicationEndpoint]: #_Layer_7_Endpoint
+  [consumes]: #_Consumes_collection
+  [fromProducers]: #fromproducers-object
+  [1]: #_TransportEndpoint_object
+  [2]: #_Consumes_object
+  [ipAddresses]: #ipaddresses-object
+  [fdqNames]: #fqdnames-object
+  [special]: #_Special_object
+  [ports]: #ports-object
+  [3]: #_Application_object
+  [4]: #_NetworkEndpoint_object
+  [IP Address]: #_IP_address_format
+  [FQDN]: #_FQDN_format
+  [receiver]: #receiver-object
+  [5]: #demands-object-1
+  [request]: #request-object-1
+  [jwe]: #jwe-object
+  [Figure 1 - Application communication in a Cloud Foundry PaaS without security groups on spaces 2]: #_Toc445043975
+  [Figure 2 - CF PaaS with a limited spaces configuration 2]: #_Toc445043976
+  [Figure 3 - SDN Architecture from \[10\] 5]: #_Toc445043977
+  [Figure 4 - ACDP Architectural Overview 11]: #_Toc445043978
+  [Figure 5 - Broadcast scheme 26]: #_Toc445043979
+  [Figure 6 - Unicast scheme 26]: #_Toc445043980
+  [Figure 7 - Multicast scheme 27]: #_Toc445043981
+  [Figure 8 - Anycast scheme 28]: #_Toc445043982
+  [Figure 9 - Geocast scheme 28]: #_Toc445043983
+  [Figure 10 - Operating mode of the communication protocol 30]: #_Toc445043984
+  [Figure 11 - Test setup for the proof of concept 33]: #_Toc445043985
+  [Figure 12 - Initial configuration of the WAN interface on acdp-enforcer-1 43]: #_Toc445043986
+  [Figure 13 - Initial configuration of the LAN interface on acdp-enforcer-1 44]: #_Toc445043987
+  [Figure 14 - Firewall after provisioning of Demand 5576063a-ce0a-4b9a-98a3-ed346f57cb30 46]: #_Toc445043988
+  [Figure 15 - Firewall after provisioning of Demand 765ad15e-7314-4dbd-83e7-846aa47ee6d3 47]: #_Toc445043989
+  [Figure 16 - Firewall after provisioning of Demand 1555c89b-5b13-4c43-9112-808680e427ef 48]: #_Toc445043990
+  [Figure 17 - Firewall after provisioning of Demand 196d692c-181a-4f37-8eea-e254409c375d 49]: #_Toc445043991
+  [Listing 1 - HTTP Request for the bidirectional API 31]: #_Toc445043992
+  [Listing 2 - HTTP response example 32]: #_Toc445043993
+  [Listing 3 - Initialization using an encryption key 35]: #_Toc445043994
+  [Listing 4 - ACDP Request as sent over the wire 36]: #_Toc445043995
+  [Listing 5 – Valid acdp.consume() function calls 36]: #_Toc445043996
+  [Listing 6 – Valid acdp.produce() function calls 36]: #_Toc445043997
+  [Listing 7 – Valid acdp.rawDemands() function call 37]: #_Toc445043998
+  [Listing 8 - Configuration file for acdp-test1-submitter-2 37]: #_Toc445043999
+  [Listing 9 - Implementation of the sending algorithm 38]: #_Toc445044000
+  [Listing 10 - Options object containing the real source ip 39]: #_Toc445044001
+  [Listing 11 - Implementation of the unicast listener 39]: #_Toc445044002
+  [Listing 12 - Implementation of the multicast listener 40]: #_Toc445044003
+  [Listing 13 - Validation against the ACDP Request Schema 40]: #_Toc445044004
+  [Listing 14 - Main program of the Receiver 41]: #_Toc445044005
+  [Listing 15 - Main program of acdp-test1-submitter-1 42]: #_Toc445044006
+  [Listing 16 - Main program of acdp-test1-submitter-2 42]: #_Toc445044007
+  [Listing 17 - Status of acdp-test1-receiver after startup 44]: #_Toc445044008
+  [Listing 18 - Status of acdp-test1-submitter-2 after initial start 45]: #_Toc445044009
+  [Listing 19 - ACDP Consumer Request which was sent to the receiver 45]: #_Toc445044010
+  [Listing 20 - ACDP Producer Request which was sent to the receiver 46]: #_Toc445044011
+  [Listing 21 - Status of acdp-test1-receiver after Demands from acdp-test1-submitter-2 46]: #_Toc445044012
+  [Listing 22 - Status of acdp-test1-submitter-1 after initial start 47]: #_Toc445044013
+  [Listing 23 - Status of acdp-test1-receiver after Demands from acdp-test1-submitter-1 48]: #_Toc445044014
+  [Listing 24 - Complete ACDP Request Schema 64]: #_Toc445044015
+  [Listing 25 - Firewall rule creation in the Receiver 65]: #_Toc445044016
